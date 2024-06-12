@@ -25,3 +25,6 @@ replay_pid*
 #autre
 pom.xml
 target
+
+# ressource
+webserver/src/main/java/webserver/ressource/
