@@ -14,17 +14,17 @@ import org.w3c.dom.NodeList;
  * @author Gabriel Comte
  * @version 1.0
  */
-public class ReaderFileConf {
+public class ReaderFile {
     /**
      * attribut permettant de stocker le chemin du fichier de configuration
      */
-    private final File fileConf;
+    private final File file;
     /**
      * Constructeur de la classe
      * @param path lien du fichier de configuration
      */
-    public ReaderFileConf(String path) throws Exception{
-        fileConf = new File(path);
+    public ReaderFile(String path) throws Exception{
+        file = new File(path);
     }
     /**
      * methode pour lire un parametre dans le fichier de configuration
@@ -40,7 +40,7 @@ public class ReaderFileConf {
             //creation d'un document builder
             DocumentBuilder builder = factory.newDocumentBuilder();
             //creation d'un document
-            Document doc = builder.parse(fileConf);
+            Document doc = builder.parse(file);
             doc.getDocumentElement().normalize();
             NodeList nList = doc.getElementsByTagName(param);
             //parcours de la liste des noeuds

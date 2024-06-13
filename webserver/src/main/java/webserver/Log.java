@@ -31,7 +31,7 @@ public class Log
      * @param message
      * @throws IOException
      */
-    public void ecritureLog(boolean status, String message) throws IOException
+    public void writeLog(boolean status, String message) throws IOException
     {
         try
         {   
