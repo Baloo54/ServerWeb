@@ -1,5 +1,3 @@
-package webserver;
-
 import java.io.File;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;

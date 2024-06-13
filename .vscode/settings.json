@@ -2,7 +2,6 @@
     "java.configuration.updateBuildConfiguration": "automatic",
     "java.debug.settings.onBuildFailureProceed": true,
     "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "c:\\Users\\thfch\\Downloads\\jsoup-1.17.2.jar"
+        "lib/**/*.jar"
     ]
 }

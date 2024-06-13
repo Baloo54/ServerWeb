@@ -1,32 +1,70 @@
-import java.io.File;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
+/**
+ * Classe permettant d'interpreter un script python
+ * @author Thomas Fuchs
+ * @version 1.0
+ */
 public class Interpret
 {   
-    private final String path;
+    private final String scriptPath;
+    private final String python;
 
-    public Interpret(String path)
+    /**
+     * Constructeur de la classe Interpret
+     * @param path
+     * @param python
+     */
+    public Interpret(String path, String python)
     {
-        this.path = path;
+        this.scriptPath = path;
+        this.python = python;
     }
-
-    public void interpreteurPyhton(String path)
-    {
-        Document doc = Jsoup.parse(new File(path), "UTF-8");
-        Elements codeTags = doc.select("code");
-        for (Element codeTag : codeTags) 
-        {
-            String src = codeTag.attr("src");
-            String content = codeTag.text();
-            System.out.println("src: " + src);
-            System.out.println("content: " + content);
-        }
     
+    /*
+     * Methode permettant d'interpreter un script python
+     * @throws IOException
+     */
+    public void interpreteurPyhton() throws IOException
+    {
+        
+        try {
+        ProcessBuilder pb = new ProcessBuilder(python, scriptPath);
+        Process p = pb.start();
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        String ret;
+        while ((ret = in.readLine()) != null) {
+            System.out.println(ret);
+        }
+        }catch (IOException e)
+        {   
+            System.err.println("Erreur lors de l'execution du script python");
+            e.getMessage();
+        }
+
+        //Version sans fichier python
+        
+        /*
+         String pythonCode = "import time; print(time.time())";
+
+        try {
+            ProcessBuilder pb = new ProcessBuilder(python, "-c", pythonCode);
+            Process p = pb.start();
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            String ret;
+            while ((ret = in.readLine()) != null) 
+            {
+                System.out.println(ret);
+            }
+            } catch (IOException e)
+            {   
+                System.err.println("Erreur lors de l'execution du script python");
+                e.getMessage();
+            }
+         */
     }
-   
 }

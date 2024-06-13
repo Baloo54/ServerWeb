@@ -1,5 +1,3 @@
-package webserver;
-
 import java.io.IOException;
 /**
  * Classe permettant de d'afficher le status du serveur

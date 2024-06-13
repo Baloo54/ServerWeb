@@ -1,4 +1,3 @@
-package webserver;
 /**
  * classe permettant de filtrer les ip
  * @author Comte Gabriel
