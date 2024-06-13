@@ -20,7 +20,7 @@ public class Status
     public Status(String memory, String disk, String cpu)
     {
         if(memory == null || disk == null || cpu == null){
-            throw new IllegalArgumentException("Memory, disk and cpu must not be null");
+            throw new IllegalArgumentException("Memory, disk and cpu cannot be null");
         }else{
             this.memory = memory;
             this.disk = disk;
