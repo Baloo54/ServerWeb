@@ -14,6 +14,7 @@
      * @param ipTest
      */
     public FilterIP(String ipTest) {
+        if(ipTest == null) throw new IllegalArgumentException("IP must not be null");
         // Convertir l'adresse IP en binaire pour faciliter la comparaison
         String[] octets = ipTest.split("\\.");
         StringBuilder binaryIP = new StringBuilder();
@@ -32,6 +33,7 @@
      * retourne true si l'ip est autorisée
      */
     public boolean passIP(String ip) {
+        if(ip == null) throw new IllegalArgumentException("IP must not be null");
         int cache = Integer.parseInt(ip.split("/")[1]);
         // Convertir l'adresse IP en binaire pour faciliter la comparaison
         String[] octets = ip.split("/")[0].split("\\.");

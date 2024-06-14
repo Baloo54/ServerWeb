@@ -1,4 +1,3 @@
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,8 +19,9 @@ public class Log
      * @param path
      * @throws IOException
      */
-    public Log(String path) throws IOException
+    public Log(String path) 
     {
+        if (path == null){throw new IllegalArgumentException("Path must not be null");}
         this.pathToFolder=path;
     }
     /**
@@ -30,7 +30,7 @@ public class Log
      * @param message
      * @throws IOException
      */
-    public void writeLog(boolean status, String message) throws IOException
+    public void writeLog(String message) throws IOException
     {
         try
         {   
@@ -41,7 +41,7 @@ public class Log
 
             PrintWriter out;
             //Ecriture dans le fichier de log acceslog.log ou errorlog.log selon le status
-            out = new PrintWriter(new FileWriter(pathToFolder+ (status ? "access.log" : "error.log"),true));
+            out = new PrintWriter(new FileWriter(pathToFolder,true));
             out.println(dateFormatee+message);
             out.close();
 

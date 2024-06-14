@@ -34,6 +34,9 @@ public class Status
         // StringBuilder pour stocker le status
         StringBuilder status = new StringBuilder();
         // HTML code pour afficher le status de la memoire, du disque et du cpu
+        status.append("HTTP/1.1 200 OK\r\n");
+        status.append("Content-Type: text/html\r\n");
+        status.append("Content-Encoding: gzip\r\n\r\n");
         status.append("<html><body>");
         status.append("<h1>Status</h1>");
         status.append("<p>Memoire libre: ").append(memory).append(" bytes</p>");

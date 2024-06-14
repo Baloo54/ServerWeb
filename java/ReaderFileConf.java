@@ -12,7 +12,7 @@ import org.w3c.dom.NodeList;
  * @author Gabriel Comte
  * @version 1.0
  */
-public class ReaderFile {
+public class ReaderFileConf {
     /**
      * attribut permettant de stocker le chemin du fichier de configuration
      */
@@ -21,7 +21,7 @@ public class ReaderFile {
      * Constructeur de la classe
      * @param path lien du fichier de configuration
      */
-    public ReaderFile(String path) throws Exception{
+    public ReaderFileConf(String path) throws Exception{
         file = new File(path);
     }
     /**
