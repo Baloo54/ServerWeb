@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
  */
 public class Interpret
 {   
-    private final String scriptPath;
+
     private final String python;
 
     /**
@@ -17,9 +17,8 @@ public class Interpret
      * @param path
      * @param python
      */
-    public Interpret(String path, String python)
+    public Interpret(String python)
     {
-        this.scriptPath = path;
         this.python = python;
     }
     
@@ -27,9 +26,9 @@ public class Interpret
      * Methode permettant d'interpreter un script python
      * @throws IOException
      */
-    public void interpreteurPyhton() throws IOException
+    public String interpreteurPyhton() throws IOException
     {
-        
+        /*
         try {
         ProcessBuilder pb = new ProcessBuilder(python, scriptPath);
         Process p = pb.start();
@@ -44,27 +43,34 @@ public class Interpret
             System.err.println("Erreur lors de l'execution du script python");
             e.getMessage();
         }
+        */
 
         //Version sans fichier python
         
-        /*
          String pythonCode = "import time; print(time.time())";
 
+        /**
+         * Execution du script python
+         */
+
+
+        String res = "";
         try {
             ProcessBuilder pb = new ProcessBuilder(python, "-c", pythonCode);
             Process p = pb.start();
 
             BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String ret;
+            
             while ((ret = in.readLine()) != null) 
             {
-                System.out.println(ret);
+                res+=ret;
             }
             } catch (IOException e)
             {   
                 System.err.println("Erreur lors de l'execution du script python");
                 e.getMessage();
             }
-         */
+        return res;
     }
 }

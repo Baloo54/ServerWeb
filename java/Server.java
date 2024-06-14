@@ -56,6 +56,8 @@ public class Server {
         //creation des logs
         server.logAccess = new Log(server.reader.readConf("accesslog").get(0));
         server.logError = new Log(server.reader.readConf("errorlog").get(0));
+        //creation de l'interpreteur
+        Interpret interpret = new Interpret("C:\\msys64\\ucrt64\\bin\\python3.exe");
         try{
             //creation d'un serveur avec le port du fichier de configuration
             ServerSocket serverSocket = new ServerSocket(Integer.parseInt(server.reader.readConf("port").get(0)));
@@ -101,6 +103,9 @@ public class Server {
                         //le log se fait dans la methode load
                         //envoi de la reponse
                         socket.getOutputStream().write(server.loader.load(server.logAccess, server.logError).getBytes());
+                        //interpretation du script python
+                        socket.getOutputStream().write(interpret.interpreteurPyhton().getBytes());
+
                     }
                 }     
             }
