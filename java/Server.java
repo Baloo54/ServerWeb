@@ -10,6 +10,7 @@ import java.util.ArrayList;
  * classe Server 
  * permet de lancer un serveur
  * @author Gabriel Comte
+ * @author Thomas Fuchs
  * @version 1.0
  */
 public class Server {
