@@ -105,7 +105,10 @@ public class Server {
                         //envoi de la reponse
                         socket.getOutputStream().write(server.loader.load(server.logAccess, server.logError).getBytes());
                         //interpretation du script python
-                        socket.getOutputStream().write(interpret.interpreteurPyhton().getBytes());
+                        //socket.getOutputStream().write(interpret.interpreteurPyhton().getBytes());
+                        String result = interpret.interpreteurPyhton();
+                        String httpResponse = "HTTP/1.1 200 OK\r\n\r\n" + result;
+                        socket.getOutputStream().write(httpResponse.getBytes("UTF-8"));
 
                     }
                 }     
